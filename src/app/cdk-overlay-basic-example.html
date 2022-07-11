@@ -1,4 +1,14 @@
 <!-- This button triggers the overlay and is it's origin -->
+<!-- <mat-form-field cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+  <mat-label class="label"> Some Label </mat-label>
+  <input
+    matInput
+    [matAutocomplete]="auto"
+    [formControl]="innerControl"
+    [readonly]="readonly"
+  />
+
+</mat-form-field> -->
 
 <mat-form-field
   appearance="outline"
@@ -16,7 +26,46 @@
   />
 </mat-form-field>
 
-<!-- This template displays the overlay content and is connected to the button -->
+<!-- <ul class="example-list">
+  <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true">
+    <mat-option *ngFor="let selectOption of options" [value]="selectOption">
+      <span>{{selectOption}}</span>
+    </mat-option>
+  </mat-autocomplete>
+</ul> -->
+<mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true">
+  <ng-template
+    cdkConnectedOverlayHasBackdrop
+    cdkConnectedOverlay
+    (backdropClick)="isOpen = false"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="isOpen"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
+    [cdkConnectedOverlayOffsetY]="15"
+  >
+    <mat-option *ngFor="let selectOption of options" [value]="selectOption">
+      <span>{{selectOption}}!!</span>
+    </mat-option>
+  </ng-template>
+</mat-autocomplete>
+
+<!-- <mat-form-field
+  appearance="outline"
+  class="form-control"
+  [style.zIndex]="1000000"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+>
+  <input
+    matInput
+    name="no-name"
+    (focus)="isOpen = true"
+    placeholder="focus on it"
+    [matAutocomplete]="auto"
+  />
+</mat-form-field>
+
 <ng-template
   cdkConnectedOverlayHasBackdrop
   cdkConnectedOverlay
@@ -28,16 +77,19 @@
   [cdkConnectedOverlayOffsetY]="15"
 >
   <ul class="example-list">
-    <!-- <mat-autocomplete style="background-color: white">
-      <mat-option [value]="1">Option 1</mat-option>
-      <mat-option [value]="2">Option 2</mat-option>
-      <mat-option [value]="3">Option 3</mat-option>
-    </mat-autocomplete> -->
+    <mat-form-field style="background-color: white">
+      <mat-select [value]="2">
+        <mat-option [value]="1">Option 1</mat-option>
+        <mat-option [value]="2">Option 2</mat-option>
+        <mat-option [value]="3">Option 3</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <li>Item 1</li>
     <li>Item 2</li>
     <li>Item 3</li>
   </ul>
-</ng-template>
+</ng-template> -->
 <br />
 <br />
 <br />
